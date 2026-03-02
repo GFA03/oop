@@ -39,9 +39,20 @@ AI-ul poate fi folosit **exclusiv în mod educațional**, pentru a vă explica c
 ## Cerințe tehnice
 
 - Definirea a **minim 4 clase** (fara mostenire la proiectul 1)
+- Fiecare clasă trebuie să conțină minim 4 variabile, iar in tot proiectul trebuie să aveți:
+    - Int/Long
+    - Bool
+    - Char
+    - Char*
+    - Float
+    - Int*/Float*
+    - Double
+    - Const
+    - Static 
 - **Constructori de inițializare cu parametri** pentru fiecare clasă
 - Pentru toate clasele: constructor de copiere, `operator=` de copiere, destructor
-- **`operator<<`** si **`operator>>`** pentru toate clasele
+- supraîncărcarea operatorilor **`operator<<`** si **`operator>>`** pentru toate clasele
+- Setters și Getters pentru minim 2 clase
 - Cât mai multe **`const`** (unde este cazul) și **funcții private**
 - Minim **3 funcții membru publice** pentru funcționalități netriviale specifice temei, dintre care cel puțin 1-2 mai complexe *(nu doar citiri/afișări sau adăugat/șters elemente)*
 - **Meniu interactiv** care să permită demonstrarea tuturor funcționalităților
@@ -57,5 +68,5 @@ AI-ul poate fi folosit **exclusiv în mod educațional**, pentru a vă explica c
 
 ## Cerințe de proiect
 
-
+- **Commit-uri** cât mai granulare (fiecare mesaj din commit ar trebui să fie o singură acțiune, e.g. "added Student class", in loc de un singur commit cu tot proiectul)
 - **Code review** la 2 proiecte ale colegilor
