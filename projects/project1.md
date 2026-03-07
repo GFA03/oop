@@ -49,7 +49,7 @@ AI-ul poate fi folosit **exclusiv în mod educațional**, pentru a vă explica c
     - Double
     - Const
     - Static 
-- **Constructori de inițializare cu parametri** pentru fiecare clasă
+- **Constructori (expliciți) de inițializare cu parametri** pentru fiecare clasă
 - Pentru toate clasele: constructor de copiere, `operator=` de copiere, destructor
 - supraîncărcarea operatorilor **`operator<<`** si **`operator>>`** pentru toate clasele
 - Setters și Getters pentru minim 2 clase
@@ -61,12 +61,15 @@ AI-ul poate fi folosit **exclusiv în mod educațional**, pentru a vă explica c
 
 ## Scenariu de utilizare
 
-- Crearea de obiecte și apelarea tuturor funcțiilor membru publice în `main`
+- Crearea de obiecte și apelarea/testarea **tuturor** funcțiilor membru publice în `main` — dacă nu le apelăm, la ce le-am mai definit?
 - Fișierul `tastatura.txt` va conține **doar** exemple de date de intrare de la tastatură (dacă există); datele din fișiere se pun în fișiere separate
 
 ---
 
 ## Cerințe de proiect
 
+- Proiectul trebuie să fie găzduit pe un **repository de `git`** la care să avem acces (nu e obligatoriu să fie GitHub)
+- Obligatoriu fișier **`.gitignore`** configurat corespunzător
+- **NU** faceți commit prin upload de fișiere din browser — nu se ia în considerare `.gitignore` în acest caz
 - **Commit-uri** cât mai granulare (fiecare mesaj din commit ar trebui să fie o singură acțiune, e.g. "added Student class", in loc de un singur commit cu tot proiectul)
 - **Code review** la 2 proiecte ale colegilor
