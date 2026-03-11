@@ -50,7 +50,7 @@ public:
     void addDeposit(int amount);
 };
 
-int BankAccount::noAccounts = 1;
+int BankAccount::noAccounts = 0;
 
 // ─── private helper ────────────────────────────────────────────────────────────
 
@@ -67,7 +67,7 @@ void BankAccount::copyDeposits(int noDeposits, int* deposits) {
 
 // ─── constructors ──────────────────────────────────────────────────────────────
 
-BankAccount::BankAccount() : id(noAccounts++) {
+BankAccount::BankAccount() : id(++noAccounts) {
     name = strcpy(new char[4], "N/A");
     accountHolder = "N/A";
     balance = 0.0;
@@ -76,7 +76,7 @@ BankAccount::BankAccount() : id(noAccounts++) {
     deposits = nullptr;
 }
 
-BankAccount::BankAccount(char* name, std::string accountHolder) : id(noAccounts++) {
+BankAccount::BankAccount(char* name, std::string accountHolder) : id(++noAccounts) {
     this->name = strcpy(new char[strlen(name) + 1], name);
     this->accountHolder = accountHolder;
     balance = 0.0;
@@ -85,7 +85,7 @@ BankAccount::BankAccount(char* name, std::string accountHolder) : id(noAccounts+
     deposits = nullptr;
 }
 
-BankAccount::BankAccount(char* name, std::string accountHolder, double balance, bool isInvestmentAccount, int noDeposits, int* deposits) : id(noAccounts++) {
+BankAccount::BankAccount(char* name, std::string accountHolder, double balance, bool isInvestmentAccount, int noDeposits, int* deposits) : id(++noAccounts) {
     this->name = strcpy(new char[strlen(name) + 1], name);
     this->accountHolder = accountHolder;
     this->balance = balance;
@@ -93,7 +93,7 @@ BankAccount::BankAccount(char* name, std::string accountHolder, double balance, 
     copyDeposits(noDeposits, deposits);
 }
 
-BankAccount::BankAccount(const BankAccount& obj) : id(noAccounts++) {
+BankAccount::BankAccount(const BankAccount& obj) : id(++noAccounts) {
     name = strcpy(new char[strlen(obj.name) + 1], obj.name);
     accountHolder = obj.accountHolder;
     balance = obj.balance;
