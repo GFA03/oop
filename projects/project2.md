@@ -11,6 +11,7 @@ Tema 2 extinde fundamentele din Tema 1 prin introducerea **moștenirii** și a *
 > **Nerespectarea acestor reguli duce la depunctare sau invalidarea cerinței.**
 
 - ❌ **FĂRĂ variabile globale** — orice variabilă globală (vector, array, variabilă simplă) duce automat la **nota 0**
+- ✅ **Default values** sunt citite din fisiere. No more variabile globale care sa tina default configs.
 - ❌ **FĂRĂ atribute publice**
 - ❌ **FĂRĂ cod de umplutură / cod fără sens**
 - ❌ **FĂRĂ copy-paste**
