@@ -86,8 +86,10 @@ Fiecare clasă din proiect trebuie să aibă **obligatoriu**:
 
 ## Cerințe de proiect
 
+- **Proiectul trebuie sa fie in fisiere separate!!! (nu totul in main.cpp)**
 - Proiectul trebuie să fie găzduit pe un **repository de `git`** la care să avem acces (nu e obligatoriu să fie GitHub)
 - Obligatoriu fișier **`.gitignore`** configurat corespunzător
 - **NU** faceți commit prin upload de fișiere din browser — nu se ia în considerare `.gitignore` în acest caz
 - **Commit-uri** cât mai granulare (fiecare mesaj din commit ar trebui să fie o singură acțiune, e.g. "added Movie class", în loc de un singur commit cu tot proiectul)
 - **Code review** la 2 proiecte ale colegilor
+- **BONUS** - Se puncteaza bonus (+1 punct) daca aveti mostenire in diamant
