@@ -145,6 +145,83 @@ double Triangle::perimeter() const { return a + b + c; }
 string Triangle::typeName()  const { return "Triangle"; }
 
 // ─────────────────────────────────────────────────────────────────────────────
+//  Diamond Inheritance Demo
+//
+//  Without virtual inheritance, a class that inherits from two classes that
+//  both inherit from the same base ends up with TWO copies of that base —
+//  ambiguous access and wasted memory. `virtual` inheritance solves this by
+//  ensuring only one shared base subobject exists.
+//
+//              Shape  (abstract, virtual base)
+//             /      \
+//        Outlined   Filled
+//             \      /
+//          FilledCircle   ← one Shape subobject, not two
+// ─────────────────────────────────────────────────────────────────────────────
+
+class Outlined : virtual public Shape {
+protected:
+    double strokeWidth;
+public:
+    Outlined(const string& color, double strokeWidth);
+    string strokeInfo() const;
+};
+
+Outlined::Outlined(const string& color, double strokeWidth)
+    : Shape(color), strokeWidth(strokeWidth) {}
+
+string Outlined::strokeInfo() const {
+    return "stroke=" + to_string(strokeWidth) + "px";
+}
+
+class Filled : virtual public Shape {
+protected:
+    string fillPattern;
+public:
+    Filled(const string& color, const string& fillPattern);
+    string fillInfo() const;
+};
+
+Filled::Filled(const string& color, const string& fillPattern)
+    : Shape(color), fillPattern(fillPattern) {}
+
+string Filled::fillInfo() const {
+    return "fill=" + fillPattern;
+}
+
+// Most-derived class — responsible for initialising the virtual base (Shape).
+// The Shape(color) calls inside Outlined and Filled are skipped.
+class FilledCircle : public Outlined, public Filled {
+    double radius;
+public:
+    FilledCircle(double radius, const string& color,
+                 double strokeWidth, const string& fillPattern);
+
+    double area()      const override;
+    double perimeter() const override;
+    string typeName()  const override;
+    void   describe()  const;
+};
+
+FilledCircle::FilledCircle(double radius, const string& color,
+                            double strokeWidth, const string& fillPattern)
+    : Shape(color),                   // virtual base: only this call takes effect
+      Outlined(color, strokeWidth),   // Shape(color) inside Outlined is skipped
+      Filled(color, fillPattern),     // Shape(color) inside Filled is skipped
+      radius(radius) {}
+
+double FilledCircle::area()      const { return M_PI * radius * radius; }
+double FilledCircle::perimeter() const { return 2.0 * M_PI * radius; }
+string FilledCircle::typeName()  const { return "FilledCircle"; }
+
+void FilledCircle::describe() const {
+    cout << typeName() << " #" << getId()
+         << " | " << strokeInfo()
+         << " | " << fillInfo()
+         << " | color: " << getColor() << '\n';
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 //  Static vs. dynamic dispatch demo classes
 //  These two pairs exist solely to illustrate the difference virtual makes.
 // ─────────────────────────────────────────────────────────────────────────────
@@ -244,6 +321,23 @@ int main() {
         delete s; // virtual destructor ensures each derived destructor is called
     shapes.clear();
     cout << "All shapes deleted correctly.\n";
+
+    // ── 9. Diamond inheritance ─────────────────────────────────────────────────
+    cout << "\n─── 9. Diamond inheritance ──────────────────────────────────\n";
+    cout << "FilledCircle inherits from both Outlined and Filled,\n"
+         << "which both inherit *virtually* from Shape.\n"
+         << "Result: exactly ONE Shape subobject (one id, one color).\n\n";
+
+    FilledCircle fc(3.0, "cyan", 1.5, "hatched");
+    fc.describe();
+    cout << *static_cast<Shape*>(&fc) << '\n';
+
+    // Both intermediate-class pointers refer to the same Shape subobject
+    Outlined* op = &fc;
+    Filled*   fp = &fc;
+    cout << "\nVia Outlined* -> id = " << op->getId() << '\n';
+    cout << "Via Filled*   -> id = " << fp->getId() << '\n';
+    cout << "(Same id — single shared Shape base, not two copies)\n";
 
     return 0;
 }
