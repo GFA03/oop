@@ -73,6 +73,8 @@ Fiecare clasă din proiect trebuie să aibă **obligatoriu**:
 - Cât mai multe **`const`** (unde este cazul) și **funcții private**
 - Minim **3 funcții membru publice** pentru funcționalități netriviale specifice temei, dintre care cel puțin 1-2 mai complexe *(nu doar citiri/afișări sau adăugat/șters elemente)*
 - **Meniu interactiv** care să permită demonstrarea tuturor funcționalităților
+- Toate erorile trebuie tratate (try catch)
+- Serializare pentru salvarea progresului in fisiere
 
 ---
 
@@ -93,3 +95,4 @@ Fiecare clasă din proiect trebuie să aibă **obligatoriu**:
 - **Commit-uri** cât mai granulare (fiecare mesaj din commit ar trebui să fie o singură acțiune, e.g. "added Movie class", în loc de un singur commit cu tot proiectul)
 - **Code review** la 2 proiecte ale colegilor
 - **BONUS** - Se puncteaza bonus (+1 punct) daca aveti mostenire in diamant
+- E incurajat sa folositi cat mai mult STL-ul
